@@ -1,9 +1,20 @@
 import React, { useState } from 'react';
 
 const SYMBOLS = ["cherry", "lemon", "orange", "plum", "bell", "bar", "seven"];
+const WIN_COMBINATIONS =
+[
+  ["cherry", "cherry", "cherry"],
+  ["lemon", "lemon", "lemon"],
+  ["orange", "orange", "orange"],
+  ["plum", "plum", "plum"],
+  ["bell", "bell", "bell"],
+  ["bar", "bar", "bar"],
+  ["seven", "seven", "seven"],
+];
 
 function SlotMachine() {
   const [reels, setReels] = useState([0, 0, 0]);
+  const [result, setResult] = useState("");
 
   function spin() {
     const newReels = [
@@ -12,6 +23,16 @@ function SlotMachine() {
       Math.floor(Math.random() * SYMBOLS.length),
     ];
     setReels(newReels);
+
+    const symbols = newReels.map(index => SYMBOLS[index]);
+    for (const combination of WIN_COMBINATIONS) {
+      if (symbols.toString() === combination.toString()) {
+        setResult("You Win!");
+        //console.log(symbols.toString() + combination.toString());
+        return;
+      }
+    }
+    setResult("Try Again!");
   }
 
   return (
@@ -20,6 +41,7 @@ function SlotMachine() {
       <div className="Reel">{SYMBOLS[reels[1]]}</div>
       <div className="Reel">{SYMBOLS[reels[2]]}</div>
       <button onClick={spin}>Spin</button>
+      <div className="Result">{result}</div>
     </div>
   );
 }
