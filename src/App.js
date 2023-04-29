@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './App.css';
 
 const SYMBOLS = ["cherry", "lemon", "orange", "plum", "bell", "bar", "seven"];
 const WIN_COMBINATIONS =
