@@ -16,6 +16,7 @@ const WIN_COMBINATIONS =
 function SlotMachine() {
   const [reels, setReels] = useState([0, 0, 0]);
   const [result, setResult] = useState("");
+  const [score, setScore] = useState(0);
 
   function spin() {
     const newReels = [
@@ -29,7 +30,7 @@ function SlotMachine() {
     for (const combination of WIN_COMBINATIONS) {
       if (symbols.toString() === combination.toString()) {
         setResult("You Win!");
-        //console.log(symbols.toString() + combination.toString());
+        setScore(score + 1); // update the score
         return;
       }
     }
@@ -43,6 +44,7 @@ function SlotMachine() {
       <div className="Reel">{SYMBOLS[reels[2]]}</div>
       <button onClick={spin}>Spin</button>
       <div className="Result">{result}</div>
+      <div className="Score">Score: {score}</div> {/* display the score */}
     </div>
   );
 }
