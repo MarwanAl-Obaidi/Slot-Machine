@@ -11,6 +11,13 @@ const WIN_COMBINATIONS =
   ["bell", "bell", "bell"],
   ["bar", "bar", "bar"],
   ["seven", "seven", "seven"],
+  ["cherry", "cherry"],
+  ["lemon", "lemon"],
+  ["orange", "orange"],
+  ["plum", "plum"],
+  ["bell", "bell"],
+  ["bar", "bar"],
+  ["seven", "seven"],
 ];
 
 function SlotMachine() {
@@ -28,10 +35,22 @@ function SlotMachine() {
 
     const symbols = newReels.map(index => SYMBOLS[index]);
     for (const combination of WIN_COMBINATIONS) {
-      if (symbols.toString() === combination.toString()) {
-        setResult("You Win!");
-        setScore(score + 1); // update the score
-        return;
+      if (combination.length === 3) {
+        if (symbols.toString() === combination.toString()) {
+          setResult("You Win!");
+          setScore(score + 1); // update the score
+          return;
+        }
+      } else if (combination.length === 2) {
+        if (
+          (symbols[0] === symbols[1] && combination.includes(symbols[0])) ||
+          (symbols[0] === symbols[2] && combination.includes(symbols[0])) ||
+          (symbols[1] === symbols[2] && combination.includes(symbols[1]))
+        ) {
+          setResult("You Win!");
+          setScore(score + 1); // update the score
+          return;
+        }
       }
     }
     setResult("Try Again!");
