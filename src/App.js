@@ -1,23 +1,23 @@
 import React, { useState } from 'react';
 import './App.css';
 
-const SYMBOLS = ["cherry", "lemon", "orange", "plum", "bell", "bar", "seven"];
+const SYMBOLS = ["🍒", "🍋", "🍊", "🍇", "🔔", "🍫", "7️⃣"];
 const WIN_COMBINATIONS =
 [
-  ["cherry", "cherry", "cherry"],
-  ["lemon", "lemon", "lemon"],
-  ["orange", "orange", "orange"],
-  ["plum", "plum", "plum"],
-  ["bell", "bell", "bell"],
-  ["bar", "bar", "bar"],
-  ["seven", "seven", "seven"],
-  ["cherry", "cherry"],
-  ["lemon", "lemon"],
-  ["orange", "orange"],
-  ["plum", "plum"],
-  ["bell", "bell"],
-  ["bar", "bar"],
-  ["seven", "seven"],
+  ["🍒", "🍒", "🍒"],
+  ["🍋", "🍋", "🍋"],
+  ["🍊", "🍊", "🍊"],
+  ["🍇", "🍇", "🍇"],
+  ["🔔", "🔔", "🔔"],
+  ["🍫", "🍫", "🍫"],
+  ["7️⃣", "7️⃣", "7️⃣"],
+  ["🍒", "🍒"],
+  ["🍋", "🍋"],
+  ["🍊", "🍊"],
+  ["🍇", "🍇"],
+  ["🔔", "🔔"],
+  ["🍫", "🍫"],
+  ["7️⃣", "7️⃣"],
 ];
 
 function SlotMachine() {
