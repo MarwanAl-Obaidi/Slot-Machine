@@ -23,9 +23,15 @@ const WIN_COMBINATIONS =
 function SlotMachine() {
   const [reels, setReels] = useState([0, 0, 0]);
   const [result, setResult] = useState("");
-  const [money, setMoney] = useState(0);
+  const [money, setMoney] = useState(5);
 
   function spin() {
+
+    if (money <= 0) {
+      setResult("Game Over!");
+      return;
+    }
+
     const newReels = [
       Math.floor(Math.random() * SYMBOLS.length),
       Math.floor(Math.random() * SYMBOLS.length),
@@ -54,6 +60,7 @@ function SlotMachine() {
       }
     }
     setResult("Try Again!");
+    setMoney(money - 1);
   }
 
   return (
